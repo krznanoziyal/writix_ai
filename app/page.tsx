@@ -115,17 +115,16 @@ export default function Home() {
 				alert("Character generation failed. Please try again later.");
 			}
 		} else if (activeBible === "Outline") {
-			try {
-				const result = await getPlotOutline({
-					user_premise: bibleNotes["Outline"] || "",
-					user_genre: "General",
-				});
-				// Instead of replacing immediately, simulate typing the outline.
-				simulateTypingEffectForBible(result.outline_text, "Outline");
-			} catch (error) {
-				console.error("Outline generation failed:", error);
-				alert("Outline generation failed. Please try again later.");
-			}
+			// Hardcoded outline text
+			const hardcodedOutline = `Plot Outline:
+1. Introduction – Set the stage and introduce the main conflict.
+2. Rising Action – Develop the tension and build the stakes.
+3. Climax – The turning point where the conflict reaches its peak.
+4. Falling Action – Begin resolving the conflict.
+5. Resolution – Tie up loose ends and conclude the story.`;
+
+			// Instead of calling getPlotOutline, simulate typing on BibleNotes
+			simulateTypingEffectForBible(hardcodedOutline, "Outline");
 		}
 	};
 
